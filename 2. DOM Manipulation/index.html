@@ -5,57 +5,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        #favorite-subject {
-            background-color: #FDFD96;
-        }
-
-        .newly-created {
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
     <ul id="subjects-taken">
         <li>IT101 - Introduction to Programming</li>
-        <li>IT102 - Fundamentals of C#</li>
         <li>CS100 - Discrete Structures 1</li>
+        <li>IT114L - Web Systems and Technologies</li>
         <li>IT123P - Integrative Programming</li>
     </ul>
     <script>
-        // Resource: https://www.javascripttutorial.net/javascript-dom/
-        // Resource: https://youtu.be/5fb2aPlgoys?si=oOB2OYliN078Ensg
-        //          - see first 30 minutes of the video
+        // Relevant link: https://youtu.be/5fb2aPlgoys?si=oOB2OYliN078Ensg first 30 minutes of the video
 
         // Todo 2.1 Select the unordered list with the id "subjects-taken"
-        // Resource: https://dev.to/alternate_robot/dom-selectors-in-javascript-344i
+        // Relevant Link: https://dev.to/alternate_robot/dom-selectors-in-javascript-344i
+        // Select the unordered list with the id "subjects-taken"
+        var subjectsList = document.getElementById("subjects-taken");
+        console.log(subjectsList); 
 
         // Checkpoint 2.1 What are the other ways to select elements in the DOM?
-        // Answer:
+        // Answer: getElementById, getElementsByClassName, getElementsByTagName, querySelector, getElementsByName, parentNode, childNodes, children, nextSibling, previousSibling, querySelect in Parent, and Document Selectors (not standard).
+        
+        // Todo 2.2 Set the text of the first list item to "<>"
+        var subjectsList = document.getElementById("subjects-taken");
+        firstListItem.textContent = "<>";
 
-        // Todo 2.2 Set the text of the second list item to "IT102 - Python Fundamentals"
-        // Resource: https://www.javascripttutorial.net/javascript-dom/javascript-get-child-element/
-
-        // Checkpoint 3.2 What is the difference between innerText, textContent, and innerHTML. When should you use one over the other?
+        // Checkpoint 3.2 What is the difference between innerText, textContent, and innerHTML. When should you use one over the other
         // Answer:
+        // InnerText - gets or sets the text content of an element, excluding HTML tags. Use innerText when you want the visible text content without considering the HTML structure.
+        // TextContent - Gets or sets the text content of an element, including all text, even if it's hidden with CSS. Use textContent when you want the actual text content of an element without considering its visibility or style.
+        // InnerHTML - Gets or sets the HTML content (including tags) of an element. Use innerHTML when you need to manipulate or insert HTML content, such as adding new elements or changing the structure of an element.
 
         // Todo 2.3 Create another list item, and add it as a child of the unordered list
-        //          Set the text of the list item to your favorite subject
-        // Resource: https://www.javascripttutorial.net/dom/manipulating/create-a-dom-element/
+        // Relevant Link: https://developer.mozilla.org/en-US/docs/Web/API/Document_object_model/How_to_create_a_DOM_tree
+        // Select the unordered list with the id "subjects-taken"
+        var subjectsList = document.getElementById("subjects-taken");
+        var newListItem = document.createElement("li");
+        newListItem.textContent = "New Subject";
+        subjectsList.appendChild(newListItem);
 
-        // Todo 2.4 Set the id attribute of the list item you created to "favorite-subject".
-        //          Set the class of the list item to "newly-created"
 
-        // Todo 2.5 Delete the third list item in the unordered list
+        // Todo 2.4 Set the id attribute of the list item you created to "favorite-subject". Set the class of the list item to "newly-created"
+        // Select the unordered list with the id "subjects-taken"
+        var subjectsList = document.getElementById("subjects-taken");
+        var newListItem = document.createElement("li");
+        newListItem.textContent = "New Subject";
+        newListItem.id = "favorite-subject";
+        newListItem.className = "newly-created"; 
+        subjectsList.appendChild(newListItem);
 
-        // Checkpoint 2.3 What is the difference between node and element?
-        // Answer:
+        // Todo 2.5 Delete the second list item in the unordered list
+        var subjectsList = document.getElementById("subjects-taken");
+        var secondListItem = subjectsList.getElementsByTagName("li")[1];
+        subjectsList.removeChild(secondListItem);
 
+        // Checkpoint 2.3 Checkpoint what is the difference between node and element
+        // Node -  a generic term that represents any object in the DOM tree. It can be elements, text, attributes, comments, etc. Essentially, anything present in the DOM is a node.
+        // Element - a specific type of node that represents a structural part of an HTML or XML document. It contain attributes, child nodes, and may have text content.
+        
         // Bonus Todo 2.6 Select the parent of the unordered list.
+        var subjectsList = document.getElementById("subjects-taken");
+        var parentElement = subjectsList.parentNode;
+        console.log(parentElement); 
 
         // Bonus Todo 2.7 Select the previous sibling of the list item you previously created
+       var favoriteSubjectItem = document.getElementById("favorite-subject");
+       var previousSibling = favoriteSubjectItem.previousSibling;
+       while (previousSibling && previousSibling.nodeType !== 1) {
+           previousSibling = previousSibling.previousSibling;
+       }
+
+console.log(previousSibling); 
+
     </script>
 </body>
 
